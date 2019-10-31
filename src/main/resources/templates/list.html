@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>My Message List</title>
+</head>
+<body>
+<h1>Messages Exchanged:</h1>
+
+
+<container>
+   <div class="row">
+
+            <div class="col-4">Content </div>
+            <div class="col-2">Date</div>
+            <div class="col-2">Sender</div>
+   </div>
+
+
+        <div class="row" th:each="message: ${messages}">
+            <div class="col-4 text-truncate" th:text="${message.content}"></div>
+            <div class="col-2" th:text="${message.posteddate}"></div>
+            <div class="col-2" th:text="${message.sentby}"></div>
+            <div class="col">
+                <a th:href="@{/update/{id} (id=${message.id} ) }"><button type="button" class="btn btn-primary">Update</button></a>
+                <a th:href="@{/detail/{id} (id=${message.id} ) }"><button type="button" class="btn btn-primary">Details</button></a>
+                <a th:href="@{/delete/{id} (id=${message.id} ) }"><button type="button" class="btn btn-primary">Delete</button></a>
+            </div>
+        </div>
+
+
+</container>
+
+<p></p>
+<p></p>
+
+<ul class="nav">
+        <a class="nav-link active" href="/add">Add a Message</a><br/>
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
